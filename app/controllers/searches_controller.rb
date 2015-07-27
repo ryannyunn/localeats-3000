@@ -7,12 +7,19 @@ class SearchesController < ApplicationController
     @ll = search_params['ll']
     @query = search_params['query']
     @near = search_params['near']
-    if @ll != ""
+    if @query == ""
+      flash[:notice] = "Please enter a search query"
+      redirect_to root_path
+    elsif @ll == "" && @near == ""
+      flash[:notice] = "Please enter in a neighborhood or use current location"
+      redirect_to root_path
+    elsif @ll != ""
       @venues = Search.request_ll(@query, @ll)
+      render :index
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
+      render :index
     end
-    render :index
   end
   
   private

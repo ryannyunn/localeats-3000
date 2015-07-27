@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <%= form_tag('/searches') do %>
 <%= label_tag 'search[query]', 'Looking for' %>
   <%= text_field_tag 'search[query]' %>
