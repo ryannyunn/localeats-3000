@@ -4,11 +4,13 @@ class SearchesController < ApplicationController
   end
   
   def create
-    @search = Search.create(search_params)
-    if @search.ll != ""
-      @response = Search.request_ll(@search.query, @search.ll)
-    elsif @search.near != ""
-      @response = Search.request_near(@search.query, @search.near)
+    @ll = search_params['ll']
+    @query = search_params['query']
+    @near = search_params['near']
+    if @ll != ""
+      @venues = Search.request_ll(@query, @ll)
+    elsif @near != ""
+      @venues = Search.request_near(@query, @near)
     end
     render :index
   end

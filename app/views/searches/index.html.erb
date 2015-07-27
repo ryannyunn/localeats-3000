@@ -1,25 +1,20 @@
-<% if @search.errors.any? %>
-  <ul>
-    <% @search.errors.messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= form_tag('/searches') do %>
+<%= label_tag 'search[query]', 'Looking for' %>
+  <%= text_field_tag 'search[query]' %>
 
-<%= form_for(@search) do |f| %>
-  <%= f.label :query, 'Looking for' %>
-  <%= f.text_field :query, :placeholder => "pizza" %>
-  <%= f.hidden_field :ll %>
-  <%= f.label :near %>
-  <%= f.text_field :near, :placeholder => "East Village, NY" %>
-  <%= f.submit 'Search' %>
+  <%= hidden_field_tag 'search[ll]' %>
+
+  <%= label_tag 'search[near]' %>
+  <%= text_field_tag 'search[near]' %>
+
+  <%= submit_tag 'Search' %>
 <% end %>
 
 <button id="location">Use Current Location</button>
 
-<% if @response %>
-  <div class="jumbotron" id="venues">
-    <% @response['response']['groups'][0]['items'].each do |venue| %>
+<% if @venues %>
+  <div class="jumbotron">
+    <% @venues.each do |venue| %>
       <h3><%= venue['venue']['name'] %></h3>
       <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
     <% end %>
