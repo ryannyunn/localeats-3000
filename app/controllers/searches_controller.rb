@@ -27,7 +27,9 @@ class SearchesController < ApplicationController
         flash[:notice] = "Invalid inputs"
         redirect_to root_path
       else
+       # binding.pry
         render :index
+
       end
     end
   end

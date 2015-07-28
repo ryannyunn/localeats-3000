@@ -17,11 +17,15 @@
 
 <button id="location">Use Current Location</button>
 
-<% if @venues %>
-  <div class="jumbotron">
+<div class="jumbotron">
+  <% if @venues == nil  %>
+    <h3>Welcome</h3>
+  <% elsif @venues.empty? %>
+    <h3>No results found<h3>
+  <% elsif @venues%>
     <% @venues.each do |venue| %>
       <h3><%= venue['venue']['name'] %></h3>
       <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
