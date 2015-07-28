@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'gon'
+
+gem 'geocoder'
+
 gem 'figaro'
 ruby '2.2.0'
 
