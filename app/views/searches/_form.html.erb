@@ -1,0 +1,12 @@
+<%= form_tag('/searches', remote: true) do %>
+<%= label_tag 'search[query]', 'Looking for' %>
+  <%= text_field_tag 'search[query]' %>
+
+  <%= hidden_field_tag 'search[ll]' %>
+<br>
+  <%= label_tag 'search[near]', 'near' %>
+  <%= text_field_tag 'search[near]' %>
+
+  <%= submit_tag 'Search', :id => 'submit'%>
+  <%= submit_tag 'Reset', :type => 'reset', :style => "display: none"%>
+<% end %>

@@ -20,7 +20,10 @@ class SearchesController < ApplicationController
         flash[:notice] = "Invalid inputs"
         redirect_to root_path
       else
-        render :index
+        respond_to do |format|
+          format.html {render :index}
+          format.js 
+        end
       end
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
@@ -28,9 +31,10 @@ class SearchesController < ApplicationController
         flash[:notice] = "Invalid inputs"
         redirect_to root_path
       else
-       # binding.pry
-        render :index
-
+        respond_to do |format|
+          format.html {render :index}
+          format.js 
+        end
       end
     end
   end

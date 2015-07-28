@@ -2,34 +2,15 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= form_tag('/searches') do %>
-<%= label_tag 'search[query]', 'Looking for' %>
-  <%= text_field_tag 'search[query]' %>
-
-  <%= hidden_field_tag 'search[ll]' %>
-
-  <%= label_tag 'search[near]', 'near' %>
-  <%= text_field_tag 'search[near]' %>
-
-  <%= submit_tag 'Search' %>
-  <%= submit_tag 'Reset', :type => 'reset', :style => "display: none"%>
-<% end %>
-
+<div class= "form">
+  <%= render 'form' %>
+</div>
 
 <button id="location">Use Current Location</button>
 
 <div id = "display_location"></div>
 
-<div class="jumbotron">
-  <% if @venues == nil  %>
-    <h3>Welcome</h3>
-  <% elsif @venues.empty? %>
-    <h3>No results found<h3>
-  <% elsif @venues%>
-    <% @venues.each do |venue| %>
-      <h3><%= venue['venue']['name'] %></h3>
-      <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
-    <% end %>
-  <% end %>
+<div class="jumbotron hidden" id= "results">
+  
 </div>
 
