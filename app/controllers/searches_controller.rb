@@ -15,10 +15,20 @@ class SearchesController < ApplicationController
       redirect_to root_path
     elsif @ll != ""
       @venues = Search.request_ll(@query, @ll)
-      render :index
+      if @venues == "error message"
+        flash[:notice] = "Invalid inputs"
+        redirect_to root_path
+      else
+        render :index
+      end
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
-      render :index
+      if @venues == "error message"
+        flash[:notice] = "Invalid inputs"
+        redirect_to root_path
+      else
+        render :index
+      end
     end
   end
   
