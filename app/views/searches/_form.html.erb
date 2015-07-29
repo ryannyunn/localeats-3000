@@ -1,18 +1,16 @@
 <div class = "center">
 
-<%= form_tag('/searches', remote: true) do %>
+<%= form_tag('/searches') do %>
 <div class ="form-group">
   <%= label_tag 'search[query]', 'Looking for' %>
-  <%= text_field_tag 'search[query]', '', :class => "form-control", :placeholder => "pizza" %>
+  <%= text_field_tag 'search[query]', '', :required => true, :class => "form-control", :placeholder => "pizza" %>
 </div>
+  
   <%= hidden_field_tag 'search[ll]' %>
+
 <div class ="form-group">
   <%= label_tag 'search[near]', 'Near' %>
-  <%= text_field_tag 'search[near]', '', :class => "form-control", :placeholder => "East Village, NY"%>
-</div>
-
-<div class="whirly-loader">
-  Loading…
+  <%= text_field_tag 'search[near]', '', :required => true, :class => "form-control", :placeholder => "East Village, NY"%>
 </div>
 
 <button id="location" class= "btn btn-default">Use Current Location Instead</button>
