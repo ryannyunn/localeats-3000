@@ -1,5 +1,6 @@
 $(function(){
   $("#location").on('click', function(){
+    $("#search_near").val("Looking for your location...");
     navigator.geolocation.getCurrentPosition(function(position){
       var crd = position.coords;
       var latitude = crd.latitude;

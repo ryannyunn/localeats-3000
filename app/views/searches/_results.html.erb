@@ -9,22 +9,28 @@
     <% end %>
 <% end %>
 
-
-
 <div id="map" style="width: 500px; height: 400px;"></div>
   <script type="text/javascript">
 
-  <%= ruby_locations = [] %>
+  <% longitudes = [] %>
+  <% latitudes = [] %>
+  <% names = [] %>
 
   <% venues.each.with_index(1) do |venue, i| %>
     <% longitude = venue['venue']['location']['lng'] %>
     <% latitude = venue['venue']['location']['lat'] %>
     <% name = venue['venue']['name'] %>
-    <% ruby_locations << [name, latitude, longitude, i] %>
+    <% longitudes << longitude %>
+    <% latitudes << latitude %>
+    <% names << name %>
   <% end %>
 
-  var locations = '<%= ruby_locations %>';
-  
+    var longitudes = '<%= longitudes %>'.replace('[', '').replace(']', '').split(',').map(function(lng){ return parseFloat(lng); });
+    var latitudes = '<%= latitudes %>'.replace('[', '').replace(']', '').split(',').map(function(lat){ return parseFloat(lat); });
+    var names = '<%= names %>'.replace('[', '').replace(']', '').split(',');
+
+    debugger;
+
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: new google.maps.LatLng(40.7127, -74.0059),
@@ -35,17 +41,4 @@
 
     var marker, i;
 
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
   </script>

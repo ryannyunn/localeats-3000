@@ -8,9 +8,6 @@ class SearchesController < ApplicationController
     @ll = search_params['ll']
     @query = search_params['query']
     @near = search_params['near']
-
-
-
     if @ll != ""
       @venues = Search.request_ll(@query, @ll)
     elsif @near != ""
