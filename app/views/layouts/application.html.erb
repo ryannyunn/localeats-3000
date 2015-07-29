@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="http://css-spinners.com/css/spinner/whirly.css" type="text/css">
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
-  <%= include_gon %>
+  <%= include_gon(watch: true) %>
 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key']%>" type="text/javascript"></script>
