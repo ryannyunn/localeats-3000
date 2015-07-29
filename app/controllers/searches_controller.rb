@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  
   def index
     @search = Search.new
     gon.username = ENV['geonames_username']
@@ -8,23 +9,27 @@ class SearchesController < ApplicationController
     @ll = search_params['ll']
     @query = search_params['query']
     @near = search_params['near']
-    gon.global.google_map_array = []
+    @google_map_locs = []
     if @ll != ""
-      binding.pry
       @venues = Search.request_ll(@query, @ll)
       @venues.each.with_index(1).map do |venue, i| 
         longitude = venue['venue']['location']['lng']
         latitude = venue['venue']['location']['lat']
         name = venue['venue']['name']
-        gon.global.google_map_array << [name, latitude, longitude, i]
+        @google_map_locs << [name, latitude, longitude, i]
       end
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
+      @venues.each.with_index(1).map do |venue, i| 
+        longitude = venue['venue']['location']['lng']
+        latitude = venue['venue']['location']['lat']
+        name = venue['venue']['name']
+        @google_map_locs << [name, latitude, longitude, i]
+      end
     end
-    binding.pry
     respond_to do |format|
       format.html {render :index}
-      format.js 
+      format.json {render json: {places: @google_map_locs}}
     end
   end
   
