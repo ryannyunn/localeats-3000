@@ -29,7 +29,7 @@ $(function(){
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
-
+    
     $.ajax({
       method: method,
       url: url,
@@ -37,5 +37,7 @@ $(function(){
       dataType: 'script'
     });
   })
+
+  
 
 });

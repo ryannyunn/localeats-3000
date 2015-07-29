@@ -12,25 +12,10 @@
 <div id="map" style="width: 500px; height: 400px;"></div>
   <script type="text/javascript">
 
-  <% longitudes = [] %>
-  <% latitudes = [] %>
-  <% names = [] %>
-
-  <% venues.each.with_index(1) do |venue, i| %>
-    <% longitude = venue['venue']['location']['lng'] %>
-    <% latitude = venue['venue']['location']['lat'] %>
-    <% name = venue['venue']['name'] %>
-    <% longitudes << longitude %>
-    <% latitudes << latitude %>
-    <% names << name %>
-  <% end %>
-
-    var longitudes = '<%= longitudes %>'.replace('[', '').replace(']', '').split(',').map(function(lng){ return parseFloat(lng); });
-    var latitudes = '<%= latitudes %>'.replace('[', '').replace(']', '').split(',').map(function(lat){ return parseFloat(lat); });
-    var names = '<%= names %>'.replace('[', '').replace(']', '').split(',');
+    var locations = gon.global.google_map_array;
 
     debugger;
-
+  
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: new google.maps.LatLng(40.7127, -74.0059),
@@ -40,5 +25,7 @@
     var infowindow = new google.maps.InfoWindow();
 
     var marker, i;
+
+    debugger;
 
   </script>
