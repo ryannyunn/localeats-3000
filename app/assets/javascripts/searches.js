@@ -1,6 +1,8 @@
 $(function(){
   $("#display_location").hide();
+  $(".whirly-loader").hide();
   $("#location").on('click', function(){
+    $(".whirly-loader").show();
     navigator.geolocation.getCurrentPosition(function(position){
       var crd = position.coords;
       var latitude = crd.latitude;
@@ -11,7 +13,7 @@ $(function(){
       var link = "http://api.geonames.org/findNearestAddressJSON?lat=" + latitude + "&lng=" + longitude + "&username=" + username
       $.getJSON(link)
       .done(function(data){
-        debugger;
+        $(".whirly-loader").hide();
         var address = "<p> It seems like you're in: "+ data.address.placename + ", " + data.address.postalcode + "</p>"
         
         $("#display_location").html(address)
@@ -23,6 +25,21 @@ $(function(){
       });
    });
  });
+
+ //on form.submit function 
+ //clear flash
+ // serialize array
+ // get form info 
+ //make ajax call 
+
+ // $("form").submit(function(){
+ //  $('div.flash').html('')
+ //  debugger;
+
+ //  $.ajax({
+
+ //  })
+ // })
 
 
 });

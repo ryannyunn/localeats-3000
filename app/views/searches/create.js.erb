@@ -1,2 +1,7 @@
+   
+
+$('div.flash').html('');
+
 $('#results').html("<%= j render partial: 'results', locals: {venues: @venues, query: @query} %>")
+
 $('#results').removeClass("hidden")

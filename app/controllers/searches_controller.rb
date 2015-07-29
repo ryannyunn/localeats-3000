@@ -9,17 +9,19 @@ class SearchesController < ApplicationController
     @query = search_params['query']
     @near = search_params['near']
     if @query == ""
-      flash[:notice] = "Please enter a search query"
-      redirect_to root_path
+      flash.now[:notice] = "Please enter a search query"
+      render 'layouts/shared/flash'
     elsif @ll == "" && @near == ""
-      flash[:notice] = "Please enter in a neighborhood or use current location"
-      redirect_to root_path
+      flash.now[:notice] = "Please enter in a neighborhood or use current location"
+      render 'layouts/shared/flash'
     elsif @ll != ""
       @venues = Search.request_ll(@query, @ll)
       if @venues == "error message"
-        flash[:notice] = "Invalid inputs"
-        redirect_to root_path
+        flash.now[:notice] = "Invalid inputs"
+        render 'layouts/shared/flash'
       else
+        flash.now[:notice] = ""
+        render 'layouts/shared/flash'
         respond_to do |format|
           format.html {render :index}
           format.js 
@@ -28,8 +30,8 @@ class SearchesController < ApplicationController
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
       if @venues == "error message"
-        flash[:notice] = "Invalid inputs"
-        redirect_to root_path
+        flash.now[:notice] = "Invalid inputs"
+        render 'layouts/shared/flash'
       else
         respond_to do |format|
           format.html {render :index}
