@@ -8,18 +8,17 @@ class SearchesController < ApplicationController
     @ll = search_params['ll']
     @query = search_params['query']
     @near = search_params['near']
+
+
+
     if @ll != ""
       @venues = Search.request_ll(@query, @ll)
-      respond_to do |format|
-          format.html {render :index}
-          format.js 
-      end
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
-      respond_to do |format|
-        format.html {render :index}
-        format.js 
-      end
+    end
+    respond_to do |format|
+      format.html {render :index}
+      format.js 
     end
   end
   
