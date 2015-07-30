@@ -4,11 +4,27 @@
   padding-bottom: 2%;
 }
 
+.footer{
+    text-align: center;
+    /*background-color: #EFEFEF;*/
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-top: 1px solid #dee1e9;;
+}
+
+#slash{
+    color: #15bdde;
+}
+
+i{
+   color: #d9534f; 
+}
 .about{
     text-align: center;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 8%;
 }
 .about img{
     display: inline-block;
@@ -17,6 +33,7 @@
     border-radius: 50%;
     margin-left: 3%;
     margin-right: 3%;
+    margin-top: 3%;
 }
 
 .about img:hover{
