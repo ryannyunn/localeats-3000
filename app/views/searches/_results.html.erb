@@ -1,4 +1,3 @@
-
 <% if venues == nil  %>
     <h3>Welcome</h3>
   <% elsif venues.empty? %>
@@ -12,11 +11,12 @@
 
 
 <script>
-debugger;
+
   createMap();
+  $('#myModal').modal('hide');
 
   function createMap(){
-   debugger; 
+
     var locations = JSON.parse("<%= locations %>".replace(/&quot;/g, '"'));
 
     var bounds = new google.maps.LatLngBounds();
@@ -50,9 +50,6 @@ debugger;
     map.fitBounds(bounds);
 
   };
-
-
-  
 
 </script>
 

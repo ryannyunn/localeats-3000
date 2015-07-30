@@ -1,6 +1,11 @@
 require 'open-uri'
 class Search
 
+  # if search is similar "donut", "pizza",
+  #Search.assign_fact
+  # picks a random fact from the type
+  # Search.fact 
+
 HTTP_ERRORS = [
   OpenURI::HTTPError,
   Timeout::Error
@@ -8,6 +13,10 @@ HTTP_ERRORS = [
   
   ID = ENV['foursquare_id']
   SECRET = ENV['foursquare_secret']
+
+  def self.generate_random_fact
+    Fact.all.sample.content
+  end
   
   def self.request_ll(query, ll)
     offset = 0
