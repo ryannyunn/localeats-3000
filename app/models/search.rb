@@ -1,6 +1,11 @@
 require 'open-uri'
 class Search
 
+  # if search is similar "donut", "pizza",
+  #Search.assign_fact
+  # picks a random fact from the type
+  # Search.fact 
+
 HTTP_ERRORS = [
   OpenURI::HTTPError,
   Timeout::Error
@@ -8,6 +13,10 @@ HTTP_ERRORS = [
   
   ID = ENV['foursquare_id']
   SECRET = ENV['foursquare_secret']
+
+  def self.generate_random_fact
+    Fact.all.sample.content
+  end
   
   def self.request_ll(query, ll)
     offset = 0
@@ -17,7 +26,7 @@ HTTP_ERRORS = [
       api_response = open(api_request).read
       @response = JSON.parse(api_response)
       @response['response']['groups'][0]['items'].each do |venue|
-        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] != 0 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
+        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] >= 100 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
           venues << venue
         end
       end
@@ -39,7 +48,7 @@ HTTP_ERRORS = [
       end
       @response = JSON.parse(api_response)
       @response['response']['groups'][0]['items'].each do |venue|
-        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] != 0 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
+        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] >= 100 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
           venues << venue
         end
       end

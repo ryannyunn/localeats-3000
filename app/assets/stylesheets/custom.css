@@ -250,7 +250,14 @@ p.copyright {
 }
 
 
-
+#about {
+    position: relative;
+}
+#about img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
 
 
 

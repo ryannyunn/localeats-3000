@@ -1,4 +1,15 @@
 $(function(){
+
+  $(".about").on('click', function(){
+    jumpToAbout();
+  });
+
+  function jumpToAbout(){
+      $('html, body').animate({
+          scrollTop: $("#about").offset().top
+      }, 2000);
+  };
+
   $("#location").on('click', function(){
     $("#search_near").val("Looking for your location...");
     navigator.geolocation.getCurrentPosition(function(position){
@@ -26,12 +37,16 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();    
 
+    var query = $("#search_query").val()
+
+    $("#myModalLabel").html("Searching for locals' favorite " + query + " spots...")
+    $('#myModal').children('div').children('div').children('div.modal-body').html("<h4>Did you Know?</h4><p>"+ gon.fact +"</p>");
     $('#myModal').modal('show');
 
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
-    debugger;
+
     $.ajax({
       method: method,
       url: url,
@@ -39,6 +54,4 @@ $(function(){
       dataType: 'script'
     });
   })
-
-
 });
