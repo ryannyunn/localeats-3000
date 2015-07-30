@@ -1,10 +1,28 @@
 <% if venues == nil  %>
     <h3>Welcome</h3>
   <% elsif venues.empty? %>
-    <h3>No results found for <%= query %> in that location<h3>
+    <h3>Aw, bummer! There aren't any local favorite <%= query %> spots in that location<h3>
   <% elsif venues%>
     <% venues.each do |venue| %>
-      <h3><%= venue['venue']['name'] %></h3>
-      <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
+      <div id = "<%=venue['venue']['id'] %>">
+        <h3><%= venue['venue']['name'] %></h3>
+        <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
+      </div>
     <% end %>
 <% end %>
+
+<script>
+  
+  $(".about").html("")
+
+  var locations = JSON.parse("<%= locations %>".replace(/&quot;/g, '"'));
+
+  if (locations.length != 0){
+     createMap(locations);
+     $('#myModal').modal('hide');
+  }else{
+    $('#myModal').modal('hide');
+    $('#map').addClass('hidden');
+  }
+
+</script>

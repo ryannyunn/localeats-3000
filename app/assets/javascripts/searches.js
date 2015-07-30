@@ -1,4 +1,15 @@
 $(function(){
+
+  $(".about").on('click', function(){
+    jumpToAbout();
+  });
+
+  function jumpToAbout(){
+      $('html, body').animate({
+          scrollTop: $("#about").offset().top
+      }, 2000);
+  };
+
   $("#location").on('click', function(){
     $("#search_near").val("Looking for your location...");
     navigator.geolocation.getCurrentPosition(function(position){
@@ -26,6 +37,12 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();    
 
+    var query = $("#search_query").val()
+
+    $("#myModalLabel").html("Searching for locals' favorite " + query + " spots...")
+    $('#myModal').children('div').children('div').children('div.modal-body').html("<h4>Did you Know?</h4><p>"+ gon.fact +"</p>");
+    $('#myModal').modal('show');
+
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
@@ -34,44 +51,7 @@ $(function(){
       method: method,
       url: url,
       data: data,
-      dataType: 'json',
-      success: createMap
+      dataType: 'script'
     });
   })
-
-  function createMap(response){
-
-    var bounds = new google.maps.LatLngBounds();
-    var locations = response.places;
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(locations[1][1], locations[1][2]),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      bounds.extend(marker.position);
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent("<b>" + locations[i][0] + "</b>" + "<br>" + locations[i][4] + "<br> Foursquare rating: " + locations[i][5]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-
-    map.fitBounds(bounds);
-
-  };
-
 });

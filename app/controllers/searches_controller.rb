@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new
     gon.username = ENV['geonames_username']
+    gon.fact = Search.generate_random_fact
   end
   
   def create
@@ -33,7 +34,7 @@ class SearchesController < ApplicationController
     end
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: {places: @google_map_locs}}
+      format.js
     end
   end
   

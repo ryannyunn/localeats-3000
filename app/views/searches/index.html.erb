@@ -1,14 +1,28 @@
-<div class="center">
+<%= render 'form' %>
 
-<div class= "new-search">
-  <%= render 'form' %>
+<div class= "all-results">
+<div class = "about">
+  <h1> About </h1>
+  <p>Wherethelocalsat is an app that allows you to search for the best restaurants that locals frequent.</p>
+  <p> We used an algorithm that gives you only the restaurants with top ratings that people keep going back to. For this project, we used the <a href = "http://developer.foursquare.com">Foursquare API</a> to get the restaurants and their checkins and the <a href = "http://developers.google.com/maps/">Google Maps API</a> to visually show each location on the map.</p>
+  <p>Check out our source code <a href = "https://github.com/ryannyunn/wherethelocalsat">here!</a></p>
+
+  <h2>The Team</h2>
+
+    <a href = "http://www.github.com/minling"><img src = "http://web0615.students.flatironschool.com/img/students/minling.jpg"></a>
+ 
+    <a href = "http://www.github.com/elainapolson"><img src = "http://web0615.students.flatironschool.com/img/students/elaina_polson_index.jpg"></a>
+
+    <a href = "https://github.com/ryannyunn"><img src ="http://web0615.students.flatironschool.com/img/students/ryan_yun_index_profile.jpg"></a>
+
 </div>
-<br>
-<br>
 
-<div class="jumbotron hidden" id= "results"></div>
-
-
-  <div id="map" style="width: 500px; height: 400px;"></div>
-
+  <div id="map" class="col-md-6 hidden"></div>
+  <div id="results" class="jumbotron hidden col-md-6"></div>
 </div>
+
+<!-- Fact Modal -->
+<%= render 'modal' %>
+<!-- End Fact Modal -->
+
+
