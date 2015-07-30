@@ -43,6 +43,4 @@ $(function(){
       dataType: 'script'
     });
   })
-
-
 });

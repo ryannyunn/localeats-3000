@@ -30,4 +30,5 @@ function createMap(locations){
   }
 
   map.fitBounds(bounds);
+  $('#myModal').modal('hide');
 };

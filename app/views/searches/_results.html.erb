@@ -11,6 +11,14 @@
 
 <script>
   var locations = JSON.parse("<%= locations %>".replace(/&quot;/g, '"'));
-  createMap(locations);
-  $('#myModal').modal('hide');
+
+  if (locations.length != 0){
+     createMap(locations);
+  }else{
+    $('#myModal').modal('hide');
+  }
+  // when this partial is rendered:
+  // check and see whats up w venues, hide modal no matter what, if no venues, hide map and 
+  // show message, otherwise show map. 
+  
 </script>
