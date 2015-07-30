@@ -21,7 +21,6 @@ class SearchesController < ApplicationController
         @google_map_locs << [name, latitude, longitude, i, address, rating]
       end
     elsif @near != ""
-      binding.pry
       @venues = Search.request_near(@query, @near)
       @venues.each.with_index(1).map do |venue, i| 
         longitude = venue['venue']['location']['lng']
