@@ -5,18 +5,18 @@
     <h3>No results found for <%= query %> in that location<h3>
   <% elsif venues%>
     <% venues.each do |venue| %>
-      <h3><%= venue['venue']['name'] %></h3>
+      <h4><%= venue['venue']['name'] %></h4>
       <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
     <% end %>
 <% end %>
 
 
 <script>
-debugger;
+
   createMap();
 
   function createMap(){
-   debugger; 
+    $('.about').html('')
     var locations = JSON.parse("<%= locations %>".replace(/&quot;/g, '"'));
 
     var bounds = new google.maps.LatLngBounds();
@@ -55,5 +55,6 @@ debugger;
   
 
 </script>
+
 
 

@@ -1,40 +1,65 @@
-h1{
+.center h1{
   font-size: 350%;
-}
- body {
-   background-image: url('http://www.marklobo.com.au/news/wp-content/uploads/2013/02/Mark_Lobo_Photography-Melbourne-Jam_Jar1.jpg');
-  background-position: center;
-  background-size: cover;
+  color: #fff; 
+  padding-bottom: 2%;
 }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
+.about{
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
-
-.center{
+.ghost-button-rounded-corners {
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
   text-align: center;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  outline: none;
+  text-decoration: none;
 }
 
-.container{
-  text-align: center;
+.ghost-button-rounded-corners:hover,
+.ghost-button-rounded-corners:active {
+  background-color: #FF5050;
+  color: #fff;
 }
 
-.flash{
-  color: red;
+.form-group{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 150%;
+    color: #fff;
 }
 
-#submit{
-  width: 209.188px; 
+.form-block{
+    padding-bottom: 2%;
 }
+
+.labels{
+    font-weight: 300;
+}
+
+#results{
+    height: 600px;
+    overflow: scroll;
+}
+
+.all-results{
+    display: inline;
+    width: 100%;
+}
+
+#map {
+   height: 600px;
+}
+
+
 
 body,
 html {
@@ -50,7 +75,7 @@ h4,
 h5,
 h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .topnav {
@@ -66,8 +91,8 @@ h6 {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
-    background: url(http://www.marklobo.com.au/news/wp-content/uploads/2013/02/Mark_Lobo_Photography-Melbourne-Jam_Jar1.jpg) no-repeat center center;
+    /*color: #f8f8f8;*/
+    background: url(http://bashmedia123.com/wp-content/uploads/2014/12/restaurant2.jpg);
     background-size: cover;
 }
 
@@ -199,11 +224,6 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
-}
-
-#map {
-   width: 500px; 
-   height: 400px;
 }
 
 .hidden {
