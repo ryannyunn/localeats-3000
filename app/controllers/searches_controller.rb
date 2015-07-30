@@ -33,7 +33,7 @@ class SearchesController < ApplicationController
     end
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: {places: @google_map_locs}}
+      format.js
     end
   end
   
