@@ -26,6 +26,8 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();    
 
+    $('#myModal').modal('show');
+
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
@@ -40,6 +42,8 @@ $(function(){
   })
 
   function createMap(response){
+
+    $('#myModal').modal('hide');
 
     var bounds = new google.maps.LatLngBounds();
     var locations = response.places;
