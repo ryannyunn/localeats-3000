@@ -1,6 +1,10 @@
 .center h1{
   font-size: 350%;
   color: #fff; 
+}
+.center h2{
+  font-size: 150%;
+  color: #fff; 
   padding-bottom: 2%;
 }
 
@@ -16,7 +20,7 @@
     color: #15bdde;
 }
 
-i{
+.fa{
    color: #d9534f; 
 }
 .about{
@@ -24,7 +28,6 @@ i{
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 8%;
 }
 .about img{
     display: inline-block;
@@ -34,6 +37,7 @@ i{
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 3%;
+    margin-bottom: 8%;
 }
 
 .about img:hover{
