@@ -26,7 +26,7 @@ HTTP_ERRORS = [
       api_response = open(api_request).read
       @response = JSON.parse(api_response)
       @response['response']['groups'][0]['items'].each do |venue|
-        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] != 0 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
+        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] >= 100 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
           venues << venue
         end
       end
@@ -48,7 +48,7 @@ HTTP_ERRORS = [
       end
       @response = JSON.parse(api_response)
       @response['response']['groups'][0]['items'].each do |venue|
-        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] != 0 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
+        if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] >= 100 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)
           venues << venue
         end
       end

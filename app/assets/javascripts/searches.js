@@ -26,6 +26,9 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();    
 
+    var query = $("#search_query").val()
+
+    $("#myModalLabel").html("Searching for locals' favorite " + query + " spots...")
     $('#myModal').children('div').children('div').children('div.modal-body').html("<h4>Did you Know?</h4><p>"+ gon.fact +"</p>");
     $('#myModal').modal('show');
 
@@ -40,6 +43,4 @@ $(function(){
       dataType: 'script'
     });
   })
-
-
 });
