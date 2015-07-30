@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new
     gon.username = ENV['geonames_username']
+    gon.fact = Search.generate_random_fact
   end
   
   def create

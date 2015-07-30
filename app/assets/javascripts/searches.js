@@ -26,12 +26,13 @@ $(function(){
     e.preventDefault();
     e.stopPropagation();    
 
+    $('#myModal').children('div').children('div').children('div.modal-body').html("<h4>Did you Know?</h4><p>"+ gon.fact +"</p>");
     $('#myModal').modal('show');
 
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
-    debugger;
+
     $.ajax({
       method: method,
       url: url,
