@@ -1,3 +1,4 @@
+
 <% if venues == nil  %>
     <h3>Welcome</h3>
   <% elsif venues.empty? %>
@@ -8,6 +9,7 @@
       <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
     <% end %>
 <% end %>
+
 
 <script>
 
@@ -53,4 +55,5 @@
   
 
 </script>
+
 
