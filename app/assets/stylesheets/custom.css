@@ -10,6 +10,25 @@
     margin-left: auto;
     margin-right: auto;
 }
+.about img{
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.about img:hover{
+    opacity: 0.5;
+}
+.about h1{
+    padding-top: 10%;
+}
+.about p{
+    padding-top: 2%;
+    font-size: 125%; 
+}
 .ghost-button-rounded-corners {
   display: inline-block;
   width: 200px;
