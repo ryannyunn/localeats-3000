@@ -1,4 +1,15 @@
 $(function(){
+
+  $(".about").on('click', function(){
+    jumpToAbout();
+  });
+
+  function jumpToAbout(){
+      $('html, body').animate({
+          scrollTop: $("#about").offset().top
+      }, 2000);
+  };
+
   $("#location").on('click', function(){
     $("#search_near").val("Looking for your location...");
     navigator.geolocation.getCurrentPosition(function(position){
