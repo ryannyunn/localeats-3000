@@ -1,5 +1,3 @@
-<div class = "center">
-
 <%= form_tag('/searches') do %>
 <div class ="form-group">
   <%= label_tag 'search[query]', 'Looking for' %>
@@ -21,5 +19,3 @@
   <%= submit_tag 'Search', :id => 'submit', :class => 'btn btn-primary'%>
   <%= submit_tag 'Reset', :type => 'reset', :style => "display: none"%>
 <% end %>
-
-</div>
