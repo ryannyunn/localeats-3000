@@ -1,6 +1,10 @@
 .center h1{
   font-size: 350%;
   color: #fff; 
+}
+.center h2{
+  font-size: 150%;
+  color: #fff; 
   padding-bottom: 2%;
 }
 
