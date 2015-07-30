@@ -1,11 +1,12 @@
 function createMap(locations){
+
   var locations = locations;
 
   var bounds = new google.maps.LatLngBounds();
 
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: new google.maps.LatLng(locations[1][1], locations[1][2]),
+    center: new google.maps.LatLng(locations[0][1], locations[0][2]),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
@@ -30,5 +31,5 @@ function createMap(locations){
   }
 
   map.fitBounds(bounds);
-  $('#myModal').modal('hide');
+
 };

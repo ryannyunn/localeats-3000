@@ -1,11 +1,6 @@
 require 'open-uri'
 class Search
 
-  # if search is similar "donut", "pizza",
-  #Search.assign_fact
-  # picks a random fact from the type
-  # Search.fact 
-
 HTTP_ERRORS = [
   OpenURI::HTTPError,
   Timeout::Error
@@ -23,7 +18,11 @@ HTTP_ERRORS = [
     venues = []
     while offset <= 700
       api_request = "https://api.foursquare.com/v2/venues/explore?client_id=#{ID}&client_secret=#{SECRET}&query=#{query}&ll=#{ll}&radius=1000&offset=#{offset}&limit=50&v=20140806&m=foursquare"
-      api_response = open(api_request).read
+      begin 
+        api_response = open(api_request).read
+      rescue *HTTP_ERRORS => error
+        return "error message"
+      end
       @response = JSON.parse(api_response)
       @response['response']['groups'][0]['items'].each do |venue|
         if (venue['venue']['rating'] && venue['venue']['stats']['usersCount'] >= 100 && (venue['venue']['stats']['checkinsCount'])/(venue['venue']['stats']['usersCount']) > 2.5 && venue['venue']['categories'][0]['name'] != "Grocery Store" && venue['venue']['categories'][0]['name'] != "Supermarket" && venue['venue']['rating'] >= 8)

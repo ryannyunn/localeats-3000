@@ -1,7 +1,6 @@
+$('#results').removeClass("hidden");
+$('#map').removeClass("hidden");
 $('#results').html("<%= j render partial: 'results', locals: {venues: @venues, query: @query, locations: @google_map_locs} %>");
 
-$('#map').removeClass("hidden");
-
-$('#results').removeClass("hidden");
 
 jumpToResults();
