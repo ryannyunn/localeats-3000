@@ -64,7 +64,7 @@ $(function(){
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent("<b>" + locations[i][0] + "</b>" + "<br>" + locations[i][4] + "<br> Foursquare rating: " + locations[i][5]);
           infowindow.open(map, marker);
         }
       })(marker, i));

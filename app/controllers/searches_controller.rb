@@ -16,7 +16,9 @@ class SearchesController < ApplicationController
         longitude = venue['venue']['location']['lng']
         latitude = venue['venue']['location']['lat']
         name = venue['venue']['name']
-        @google_map_locs << [name, latitude, longitude, i]
+        address = venue['venue']['location']["formattedAddress"]
+        rating = venue['venue']['rating']
+        @google_map_locs << [name, latitude, longitude, i, address, rating]
       end
     elsif @near != ""
       @venues = Search.request_near(@query, @near)
@@ -24,7 +26,9 @@ class SearchesController < ApplicationController
         longitude = venue['venue']['location']['lng']
         latitude = venue['venue']['location']['lat']
         name = venue['venue']['name']
-        @google_map_locs << [name, latitude, longitude, i]
+        address = venue['venue']['location']["formattedAddress"]
+        rating = venue['venue']['rating']
+        @google_map_locs << [name, latitude, longitude, i, address, rating]
       end
     end
     respond_to do |format|
