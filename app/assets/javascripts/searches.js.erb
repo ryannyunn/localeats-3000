@@ -29,7 +29,7 @@ $(function(){
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serializeArray();
-
+    debugger;
     $.ajax({
       method: method,
       url: url,
@@ -40,6 +40,8 @@ $(function(){
   })
 
   function createMap(response){
+    debugger;
+    $('content-section-a hidden').removeClass('hidden');
 
     var locations = response.places;
 
