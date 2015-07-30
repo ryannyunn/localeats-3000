@@ -41,11 +41,12 @@ $(function(){
 
   function createMap(response){
 
+    var bounds = new google.maps.LatLngBounds();
     var locations = response.places;
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: new google.maps.LatLng(40.7127, -74.0059),
+      zoom: 15,
+      center: new google.maps.LatLng(locations[1][1], locations[1][2]),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -59,6 +60,8 @@ $(function(){
         map: map
       });
 
+      bounds.extend(marker.position);
+
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
@@ -66,6 +69,9 @@ $(function(){
         }
       })(marker, i));
     }
+
+    map.fitBounds(bounds);
+
   };
 
 });
