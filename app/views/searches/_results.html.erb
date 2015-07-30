@@ -4,8 +4,10 @@
     <h3>No results found for <%= query %> in that location<h3>
   <% elsif venues%>
     <% venues.each do |venue| %>
-      <h3><%= venue['venue']['name'] %></h3>
-      <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
+      <div id = "<%=venue['venue']['id'] %>">
+        <h3><%= venue['venue']['name'] %></h3>
+        <p><%= venue['venue']['location']['formattedAddress'].join(" ") %></p>
+      </div>
     <% end %>
 <% end %>
 
@@ -14,11 +16,10 @@
 
   if (locations.length != 0){
      createMap(locations);
+     jumpToResults();
   }else{
     $('#myModal').modal('hide');
+    jumpToResults();
   }
-  // when this partial is rendered:
-  // check and see whats up w venues, hide modal no matter what, if no venues, hide map and 
-  // show message, otherwise show map. 
-  
+
 </script>
