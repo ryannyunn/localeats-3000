@@ -10,8 +10,8 @@ class SearchesController < ApplicationController
     @query = search_params['query']
     @near = search_params['near']
     @google_map_locs = []
-    if @ll != ""
-      @venues = Search.request_ll(@query, @ll)
+    if @near != ""
+      @venues = Search.request_near(@query, @near)
       @venues.each.with_index(1).map do |venue, i| 
         longitude = venue['venue']['location']['lng']
         latitude = venue['venue']['location']['lat']
@@ -20,8 +20,8 @@ class SearchesController < ApplicationController
         rating = venue['venue']['rating']
         @google_map_locs << [name, latitude, longitude, i, address, rating]
       end
-    elsif @near != ""
-      @venues = Search.request_near(@query, @near)
+    elsif @ll != ""
+      @venues = Search.request_ll(@query, @ll)
       @venues.each.with_index(1).map do |venue, i| 
         longitude = venue['venue']['location']['lng']
         latitude = venue['venue']['location']['lat']
