@@ -20,7 +20,7 @@ $(function(){
       $("#search_ll").val(ll);
   
       var username = gon.username
-      var link = "http://api.geonames.org/findNearestAddressJSON?lat=" + latitude + "&lng=" + longitude + "&username=" + username
+      var link = "https://api.geonames.org/findNearestAddressJSON?lat=" + latitude + "&lng=" + longitude + "&username=" + username
       
       $.getJSON(link)
       .done(function(data){
