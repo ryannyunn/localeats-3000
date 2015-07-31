@@ -13,7 +13,7 @@ HTTP_ERRORS = [
     offset = 0
     venues = []
     while offset <= 700
-      api_request = "https://api.foursquare.com/v2/venues/explore?client_id=#{ID}&client_secret=#{SECRET}&query=#{query}&radius=5000&ll=#{ll}&offset=#{offset}&limit=50&v=20140806&m=foursquare"
+      api_request = "https://api.foursquare.com/v2/venues/explore?client_id=#{ID}&client_secret=#{SECRET}&query=#{query}&radius=3000&ll=#{ll}&offset=#{offset}&limit=50&v=20140806&m=foursquare"
       begin 
         api_response = open(api_request).read
       rescue *HTTP_ERRORS => error
@@ -35,7 +35,7 @@ HTTP_ERRORS = [
     offset = 0
     venues = []
     while offset <= 700
-      api_request = "https://api.foursquare.com/v2/venues/explore?client_id=#{ID}&client_secret=#{SECRET}&query=#{query}&near=#{near}&radius=5000&offset=#{offset}&limit=50&v=20140806&m=foursquare"
+      api_request = "https://api.foursquare.com/v2/venues/explore?client_id=#{ID}&client_secret=#{SECRET}&query=#{query}&near=#{near}&radius=3000&offset=#{offset}&limit=50&v=20140806&m=foursquare"
      begin
       api_response = open(api_request).read
       rescue *HTTP_ERRORS => error
