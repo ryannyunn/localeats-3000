@@ -3,7 +3,6 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new
     gon.username = ENV['geonames_username']
-    gon.fact = Search.generate_random_fact
   end
   
   def create
@@ -41,6 +40,6 @@ class SearchesController < ApplicationController
   private
   
   def search_params
-    params.require(:search).permit(:query, :ll, :near)
+    params.require(:search).permit(:query, :ll, :near, :random_fact)
   end
 end

@@ -8,10 +8,6 @@ HTTP_ERRORS = [
   
   ID = ENV['foursquare_id']
   SECRET = ENV['foursquare_secret']
-
-  def self.generate_random_fact
-    Fact.all.sample.content
-  end
   
   def self.request_ll(query, ll)
     offset = 0
