@@ -1,8 +1,9 @@
-# Flatironproject1
+# localeats:3000
 
 ## Description
 
-Add a short description of your app.
+Wherethelocalsat is an app that allows you to search for the best restaurants that locals frequent.
+We used an algorithm that gives you only the restaurants with top ratings that people keep going back to. For this project, we used the [Foursquare API]('http://developer.foursquare.com') to get the restaurants and their checkins and the [Google Maps API]('http://developers.google.com/maps/') to visually show each location on the map.
 
 ## Screenshots
 
