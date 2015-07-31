@@ -5,7 +5,7 @@ HTTP_ERRORS = [
   OpenURI::HTTPError,
   Timeout::Error
 ]
-  
+
   ID = ENV['foursquare_id']
   SECRET = ENV['foursquare_secret']
   
