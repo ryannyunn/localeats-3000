@@ -13,8 +13,6 @@
 <% end %>
 
 <script>
-  
-  $(".about").html("")
 
   var locations = JSON.parse("<%= locations %>".replace(/&quot;/g, '"'));
   if (locations.length != 0){
