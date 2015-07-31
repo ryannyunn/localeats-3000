@@ -19,12 +19,12 @@ $(function(){
       var ll = latitude + ',' + longitude;
       $("#search_ll").val(ll);
   
-      var username = gon.username
-      var link = "https://api.geonames.org/findNearestAddressJSON?lat=" + latitude + "&lng=" + longitude + "&username=" + username
+      var google_geocoder = gon.google_geocoder
+      var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ll + "&key=" + google_geocoder
       
       $.getJSON(link)
       .done(function(data){
-        var address = data.address.placename + ", " + data.address.postalcode
+        var address = data['results'][3]['formatted_address']
         $("#search_near").val(address);
       })
       .fail(function(){

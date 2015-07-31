@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   
   def index
     @search = Search.new
-    gon.username = ENV['geonames_username']
+    gon.google_geocoder = ENV['google_geocoder']
   end
   
   def create
